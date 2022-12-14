@@ -15,5 +15,8 @@
     "Packages",
     "Libraries",
     "NPM"
-  ]
+  ],
+  "scripts": {
+    "init:hooks": "git config core.hooksPath .github/hooks && chmod +x .github/hooks/*"
+  }
 }
