@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "npm-packages",
+  "description": "A set of reusable JavaScript (TypeScript) packages",
+  "license": "ISC",
+  "author": "Aleksey Solovyev <solovyev.a@icloud.com> (https://alsolovyev.github.io)",
+  "homepage": "https://github.com/alsolovyev/npm-packages#readme",
+  "bugs": {
+    "url": "https://github.com/alsolovyev/npm-packages/issues",
+    "email": "solovyev.a@icloud.com"
+  },
+  "keywords": [
+    "JavaScript",
+    "TypeScript",
+    "Packages",
+    "Libraries",
+    "NPM"
+  ]
+}
