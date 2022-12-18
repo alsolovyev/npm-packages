@@ -1,0 +1,5 @@
+{
+  "displayName": "Eslint Config",
+  "setupFilesAfterEnv": ["./__tests__/jest.setup.js"],
+  "testRegex": "/__tests__/.*\\.spec\\.js$"
+}

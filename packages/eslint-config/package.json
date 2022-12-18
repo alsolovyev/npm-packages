@@ -1,0 +1,45 @@
+{
+  "name": "@alsolovyev/eslint-config",
+  "description": "Shareable ESLint configs",
+  "version": "0.1.0",
+  "license": "ISC",
+  "author": "Aleksey Solovyev <solovyev.a@icloud.com> (https://alsolovyev.github.io)",
+  "homepage": "https://github.com/alsolovyev/npm-packages/packages/eslint-config#readme",
+  "bugs": {
+    "url": "https://github.com/alsolovyev/npm-packages/issues",
+    "email": "solovyev.a@icloud.com"
+  },
+  "keywords": [
+    "eslint",
+    "config"
+  ],
+  "scripts": {
+    "build": "./scripts/build ./src/common.config.yaml ./dist/common.config.yaml",
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "./dist/common.config.yaml"
+  ],
+  "exports": {
+    ".": "./dist/common.config.yaml"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.29.0"
+  },
+  "peerDependencies": {
+    "eslint": ">= 3",
+    "typescript": "*"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  }
+}
