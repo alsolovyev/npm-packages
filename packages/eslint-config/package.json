@@ -12,5 +12,33 @@
   "keywords": [
     "eslint",
     "config"
-  ]
+  ],
+  "scripts": {
+    "build": "./scripts/build ./src/common.config.yaml ./dist/common.config.yaml"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "./dist/common.config.yaml"
+  ],
+  "exports": {
+    ".": "./dist/common.config.yaml"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.29.0"
+  },
+  "peerDependencies": {
+    "eslint": ">= 3",
+    "typescript": "*"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  }
 }

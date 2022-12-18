@@ -1,0 +1,23 @@
+extends:
+  - eslint:recommended
+
+env:
+  browser: true
+  es6: true
+  node: true
+
+parserOptions:
+  ecmaVersion: latest
+
+rules:
+  include: './common.rules.yaml'
+
+overrides:
+  - files:
+      - '*.ts'
+    parser: '@typescript-eslint/parser'
+    extends:
+      - plugin:@typescript-eslint/recommended
+      - plugin:@typescript-eslint/recommended-requiring-type-checking
+    plugins:
+      - '@typescript-eslint'
