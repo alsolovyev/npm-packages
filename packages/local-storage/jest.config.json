@@ -1,0 +1,9 @@
+{
+  "displayName": "Local Storage",
+  "preset": "ts-jest",
+  "setupFilesAfterEnv": ["./__tests__/jest.setup.js"],
+  "testRegex": "/__tests__/.*\\.spec\\.ts$",
+  "globals": {
+    "window": {}
+  }
+}

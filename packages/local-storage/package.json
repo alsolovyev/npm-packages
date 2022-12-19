@@ -14,6 +14,9 @@
     "localstorage",
     "local-storage"
   ],
+  "scripts": {
+    "test": "jest"
+  },
   "devDependencies": {
     "typescript": "^4.9.4"
   }
