@@ -7,8 +7,10 @@ export interface ILocalStorage {
 }
 
 /**
- * Class for working with local storage. If the device does not support
- * local storage, in-memory storage will be used as a fallback.
+ * A class to simplify work with local storage.
+ *
+ * @remarks
+ * If local storage is not supported, in-memory storage will be used as a fallback.
  *
  * ```ts
  * const localStorage = new LocalStorage()
