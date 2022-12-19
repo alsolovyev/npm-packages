@@ -1,0 +1,17 @@
+{
+  "name": "@alsolovyev/local-storage",
+  "description": "Simplified local storage API",
+  "version": "0.1.0",
+  "license": "ISC",
+  "author": "Aleksey Solovyev <solovyev.a@icloud.com> (https://alsolovyev.github.io)",
+  "homepage": "https://github.com/alsolovyev/npm-packages/tree/master/packages/local-storage#readme",
+  "bugs": {
+    "url": "https://github.com/alsolovyev/npm-packages/issues",
+    "email": "solovyev.a@icloud.com"
+  },
+  "keywords": [
+    "storage",
+    "localstorage",
+    "local-storage"
+  ]
+}
