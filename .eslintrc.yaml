@@ -1,0 +1,13 @@
+extends:
+  - '@alsolovyev/eslint-config'
+
+env:
+  jest: true
+
+ignorePatterns:
+  - '**/dist/*.js'
+
+parserOptions:
+  project:
+    - './tsconfig.json'
+    - './packages/*/tsconfig.json'
