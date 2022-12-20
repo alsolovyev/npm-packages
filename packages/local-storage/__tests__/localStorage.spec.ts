@@ -2,6 +2,7 @@
 /* eslint @typescript-eslint/ban-ts-comment: 0 */
 
 import LocalStorage from '../src/localStorage'
+import MemoryStorage from '../src/memoryStorage'
 import type { ILocalStorage } from '../src/localStorage'
 
 describe('Local Storage', () => {
@@ -12,7 +13,7 @@ describe('Local Storage', () => {
   })
 
   afterEach(() => {
-    window.localStorage.clear()
+    window.localStorage && window.localStorage.clear()
   })
 
   it('should return true if an item was saved to local storage', () => {
@@ -78,5 +79,15 @@ describe('Local Storage', () => {
     ls.set(key, 'value')
 
     expect(ls.remove(key)).toBeFalsy()
+  })
+
+  it('should use memory storage if local storage is not supported', () => {
+    // @ts-ignore
+    delete window.localStorage
+
+    ls = new LocalStorage()
+
+    // @ts-ignore
+    expect(ls['_storageEngine']).toBeInstanceOf(MemoryStorage)
   })
 })

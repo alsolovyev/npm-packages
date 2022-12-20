@@ -1,3 +1,4 @@
+import MemoryStorage from './memoryStorage'
 import type { IStorageEngine } from './storage.interface'
 
 export interface ILocalStorage {
@@ -20,7 +21,9 @@ export default class LocalStorage implements ILocalStorage {
   private readonly _storageEngine: IStorageEngine
 
   constructor() {
-    this._storageEngine = window.localStorage
+    this._storageEngine = this._checkLocalStorageSupport()
+      ? window.localStorage
+      : new MemoryStorage()
   }
 
   /**
@@ -76,5 +79,26 @@ export default class LocalStorage implements ILocalStorage {
     }
 
     return true
+  }
+
+  /**
+   * Checks local storage support
+   */
+  private _checkLocalStorageSupport(): boolean {
+    try {
+      if (!window.localStorage) return false
+
+      // In iOS5 Private Browsing mode, attempting to use
+      // localStorage.setItem will throw the exception:
+      //   QUOTA_EXCEEDED_ERROR DOM Exception 22.
+      // Peculiarly, getItem and removeItem calls do not throw.
+      const key = `__${Math.round(Math.random() * 1e7)}__`
+      window.localStorage.setItem(key, '')
+      window.localStorage.removeItem(key)
+
+      return true
+    } catch (_) {
+      return false
+    }
   }
 }
