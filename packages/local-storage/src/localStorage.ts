@@ -13,8 +13,12 @@ export interface ILocalStorage {
  * @remarks
  * If local storage is not supported, in-memory storage will be used as a fallback.
  *
+ * @example
  * ```ts
  * const localStorage = new LocalStorage()
+ * localStorage.set('key', { a: 1, b: ['uno', 'dos', 'tres'] })
+ * localStorage.get<{ a: number, b: string[] }>('key', { a: 1, b: [] })
+ * localStorage.remove('key')
  * ```
  */
 export default class LocalStorage implements ILocalStorage {
@@ -30,6 +34,25 @@ export default class LocalStorage implements ILocalStorage {
    * Returns the current value associated with the given key.
    * If the given key does not existin the list associated with the object,
    * then it returns the default value or null.
+   *
+   * @remarks
+   * The return value is automatically parsed using JSON.parse()
+   *
+   * @param key - the key to look up the value in local storage
+   * @param [defaultValue] - the fallback value
+   * @returns the current value associated with the given key, or null
+   *
+   * @example Basic example:
+   * ```ts
+   * const localStorage = new LocalStorage()
+   * localStorage.get<string>('key')
+   * ```
+   *
+   * @example Default value example:
+   * ```ts
+   * const localStorage = new LocalStorage()
+   * localStorage.get<string>('key', 'default value')
+   * ```
    */
   public get<T>(key: string): T | null
   public get<T>(key: string, defaultValue: T): T
@@ -54,6 +77,9 @@ export default class LocalStorage implements ILocalStorage {
   /**
    * Removes the key/value pair with the given key from the list associated
    * with the object, if a key/value pair with the given key exists.
+   *
+   * @param key - the key to be removed from local storage
+   * @returns true if the key/value has been removed, otherwise false
    */
   public remove(key: string): boolean {
     try {
@@ -68,6 +94,14 @@ export default class LocalStorage implements ILocalStorage {
   /**
    * Sets the value of the pair identified by key to value, creating
    * a new key/value pair if none existed for key previously.
+   *
+   * @remark
+   * The value will be converted to a string using JSON.stringify() before being stored
+   *
+   * @param key - the key by which a value will be stored in local storage
+   * @param value - the value to be stored
+   *
+   * @returns true if the key/value has been saved, otherwise false
    */
   public set<T>(key: string, value: T): boolean {
     const storageValue = JSON.stringify(value)

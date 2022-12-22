@@ -22,6 +22,9 @@ export default class MemoryStorage implements IStorageEngine {
   /**
    * Returns the current value associated with the given key, or null
    * if the given key does not exist in the list associated with the object.
+   *
+   * @param key - the key to look up the value in memory storage
+   * @returns the current value associated with the given key, or null
    */
   public getItem(key: string): string | null {
     return this._store[key] || null
@@ -30,6 +33,8 @@ export default class MemoryStorage implements IStorageEngine {
   /**
    * Removes the key/value pair with the given key from the list associated
    * with the object, if a key/value pair with the given key exists.
+   *
+   * @param key - the key to be removed from memory storage
    */
   public removeItem(key: string): void {
     delete this._store[key]
@@ -38,6 +43,9 @@ export default class MemoryStorage implements IStorageEngine {
   /**
    * Sets the value of the pair identified by key to value, creating
    * a new key/value pair if none existed for key previously.
+   *
+   * @param key - the key by which a value will be stored in memory storage
+   * @param value - the value to be stored
    */
   public setItem(key: string, value: string): void {
     if (!value)
