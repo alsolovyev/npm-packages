@@ -15,8 +15,9 @@
     "local-storage"
   ],
   "scripts": {
-    "build": "pnpm run build:pkg",
+    "build": "pnpm run build:types && pnpm run build:pkg",
     "build:pkg": "node scripts/build.js",
+    "build:types": "tsc --project ./tsconfig.types.json",
     "test": "jest"
   },
   "devDependencies": {
