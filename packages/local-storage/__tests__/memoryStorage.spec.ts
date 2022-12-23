@@ -11,6 +11,20 @@ describe('Memory Storage', () => {
     ms = new MemoryStorage()
   })
 
+  it('should return the current number of key/value pairs in memory', () => {
+    expect(ms.length).toBe(0)
+
+    ms.setItem('key', 'value')
+
+    expect(ms.length).toBe(1)
+
+    ms.setItem('key', 'value')
+    ms.setItem('key1', 'value')
+    ms.setItem('key2', 'value')
+
+    expect(ms.length).toBe(3)
+  })
+
   it('should save an item to memory', () => {
     const key = 'key'
     const value = 'value'
