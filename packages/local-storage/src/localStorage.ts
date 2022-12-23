@@ -2,10 +2,11 @@ import MemoryStorage from './memoryStorage'
 import type { IStorageEngine } from './storage.interface'
 
 export interface ILocalStorage {
+  readonly length: number
   clear(): boolean
   get<T>(key: string, defaultValue?: T): T | null
-  set<T>(key: string, value: T): boolean
   remove(key: string): boolean
+  set<T>(key: string, value: T): boolean
 }
 
 /**
@@ -29,6 +30,14 @@ export default class LocalStorage implements ILocalStorage {
     this._storageEngine = this._checkLocalStorageSupport()
       ? window.localStorage
       : new MemoryStorage()
+  }
+
+  /**
+   * The number of key/value pairs currently present in local storage.
+   * @readonly
+   */
+  public get length(): number {
+    return this._storageEngine.length
   }
 
   /**
