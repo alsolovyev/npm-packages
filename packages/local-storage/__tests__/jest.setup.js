@@ -30,5 +30,9 @@ Object.defineProperties(window.localStorage, {
     value: jest.fn(() => {
       Object.keys(this).map(key => delete this[key])
     })
+  },
+
+  length: {
+    get: () => Object.keys(this).length
   }
 })

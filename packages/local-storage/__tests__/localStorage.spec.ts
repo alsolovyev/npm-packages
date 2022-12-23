@@ -16,6 +16,16 @@ describe('Local Storage', () => {
     window.localStorage && window.localStorage.clear()
   })
 
+  it('should remove all key/value pairs from local storage', () => {
+    ls.set('key', 'value')
+    ls.set('key1', { a: 1 })
+    ls.set('key3', [1, 2, 3, 4])
+
+    expect(window.localStorage.length).toBe(3)
+    expect(ls.clear()).toBeTruthy()
+    expect(window.localStorage.length).toBe(0)
+  })
+
   it('should return true if an item was saved to local storage', () => {
     expect(ls.set('key', 'value')).toBeTruthy()
     expect(ls.set('key1', false)).toBeTruthy()
