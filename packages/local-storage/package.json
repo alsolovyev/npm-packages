@@ -17,7 +17,7 @@
   "scripts": {
     "build": "pnpm run build:types && pnpm run build:pkg",
     "build:pkg": "node scripts/build.js",
-    "build:types": "tsc --project ./tsconfig.types.json",
+    "build:types": "tsc --project ./tsconfig.types.json && node scripts/renameModuleName.js",
     "test": "jest"
   },
   "publishConfig": {
