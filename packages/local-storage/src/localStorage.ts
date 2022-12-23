@@ -2,6 +2,7 @@ import MemoryStorage from './memoryStorage'
 import type { IStorageEngine } from './storage.interface'
 
 export interface ILocalStorage {
+  clear(): boolean
   get<T>(key: string, defaultValue?: T): T | null
   set<T>(key: string, value: T): boolean
   remove(key: string): boolean
@@ -28,6 +29,21 @@ export default class LocalStorage implements ILocalStorage {
     this._storageEngine = this._checkLocalStorageSupport()
       ? window.localStorage
       : new MemoryStorage()
+  }
+
+  /**
+   * Removes all key/value pairs from the store, if any.
+   *
+   * @returns true if removing was successful, otherwise false
+   */
+  public clear(): boolean {
+    try {
+      this._storageEngine.clear()
+    } catch (_) {
+      return false
+    }
+
+    return true
   }
 
   /**
