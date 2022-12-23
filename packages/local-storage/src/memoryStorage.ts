@@ -13,6 +13,14 @@ export default class MemoryStorage implements IStorageEngine {
   private readonly _store: Record<string, string> = Object.create(null) as Record<string, string>
 
   /**
+   * The number of key/value pairs currently present in the store.
+   * @readonly
+   */
+  public get length(): number {
+    return Object.keys(this._store).length
+  }
+
+  /**
    * Removes all key/value pairs, if there are any.
    **/
   public clear(): void {
