@@ -16,6 +16,20 @@ describe('Local Storage', () => {
     window.localStorage && window.localStorage.clear()
   })
 
+  it('should return the current number of key/value pairs in local storage', () => {
+    expect(ls.length).toBe(0)
+
+    ls.set('key', 'value')
+
+    expect(ls.length).toBe(1)
+
+    ls.set('key', 'value')
+    ls.set('key1', 'value')
+    ls.set('key2', 'value')
+
+    expect(ls.length).toBe(3)
+  })
+
   it('should remove all key/value pairs from local storage', () => {
     ls.set('key', 'value')
     ls.set('key1', { a: 1 })
