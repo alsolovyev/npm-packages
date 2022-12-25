@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "ESNext",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outFile": "types/index.d.ts"
+  },
+  "include": ["src/**/*"]
+}
