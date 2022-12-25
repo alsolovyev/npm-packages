@@ -1,0 +1,45 @@
+{
+  "name": "@alsolovyev/local-storage",
+  "description": "Simplified local storage API for any environment",
+  "version": "0.1.0",
+  "license": "ISC",
+  "author": "Aleksey Solovyev <solovyev.a@icloud.com> (https://alsolovyev.github.io)",
+  "homepage": "https://github.com/alsolovyev/npm-packages/tree/master/packages/local-storage#readme",
+  "bugs": {
+    "url": "https://github.com/alsolovyev/npm-packages/issues",
+    "email": "solovyev.a@icloud.com"
+  },
+  "keywords": [
+    "storage",
+    "localstorage",
+    "local-storage"
+  ],
+  "scripts": {
+    "build": "pnpm run build:types && pnpm run build:pkg",
+    "build:pkg": "node scripts/build.js",
+    "build:types": "tsc --project ./tsconfig.types.json && node scripts/renameModuleName.js",
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "types"
+  ],
+  "devDependencies": {
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.3.23",
+    "typescript": "^4.9.4"
+  }
+}
