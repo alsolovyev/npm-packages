@@ -31,8 +31,8 @@ npm install @alsolovyev/local-storage
 ```
 
 ```ts
-// For common js:
-// const LocalStorage = require('@alsolovyev/local-storage')
+// For CommonJS:
+// const LocalStorage = require('@alsolovyev/local-storage').default
 import LocalStorage from '@alsolovyev/local-storage'
 
 interface IUser {
