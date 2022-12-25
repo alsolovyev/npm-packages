@@ -29,3 +29,7 @@ node_modules/
 !.vscode/*.code-snippets
 .history/
 *.vsix
+
+# Dist directories
+dist
+types
