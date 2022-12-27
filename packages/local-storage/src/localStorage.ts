@@ -15,21 +15,33 @@ export interface ILocalStorage {
  * @remarks
  * If local storage is not supported, in-memory storage will be used as a fallback.
  *
+ * @param [customStorageEngine] - implementation of a custom storage engine
+ *
  * @example
+ * Basic usage:
  * ```ts
  * const localStorage = new LocalStorage()
  * localStorage.set('key', { a: 1, b: ['uno', 'dos', 'tres'] })
  * localStorage.get<{ a: number, b: string[] }>('key', { a: 1, b: [] })
  * localStorage.remove('key')
  * ```
+ *
+ * @example
+ * Use with a custom storage engine:
+ * ```ts
+ * const customStorage = new LocalStorage(customEngine)
+ * customStorage.set('key', { a: 1, b: ['uno', 'dos', 'tres'] })
+ * customStorage.get<{ a: number, b: string[] }>('key', { a: 1, b: [] })
+ * customStorage.remove('key')
+ * ```
  */
 export default class LocalStorage implements ILocalStorage {
   private readonly _storageEngine: IStorageEngine
 
-  constructor() {
-    this._storageEngine = this._checkLocalStorageSupport()
-      ? window.localStorage
-      : new MemoryStorage()
+  constructor(customStorageEngine?: IStorageEngine) {
+    this._storageEngine =
+      customStorageEngine ||
+      (this._checkLocalStorageSupport() ? window.localStorage : new MemoryStorage())
   }
 
   /**

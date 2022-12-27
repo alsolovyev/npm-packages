@@ -4,6 +4,7 @@
 import LocalStorage from '../src/localStorage'
 import MemoryStorage from '../src/memoryStorage'
 import type { ILocalStorage } from '../src/localStorage'
+import type { IStorageEngine } from '../src/storage.interface'
 
 describe('Local Storage', () => {
   let ls: ILocalStorage
@@ -103,6 +104,15 @@ describe('Local Storage', () => {
     ls.set(key, 'value')
 
     expect(ls.remove(key)).toBeFalsy()
+  })
+
+  it('should use a custom storage engine if one is provided', () => {
+    class CustomStorageEngie {}
+
+    const customStorageEngine = new CustomStorageEngie() as IStorageEngine
+    const ls = new LocalStorage(customStorageEngine)
+
+    expect(ls['_storageEngine']).toBeInstanceOf(CustomStorageEngie)
   })
 
   it('should use memory storage if local storage is not supported', () => {
