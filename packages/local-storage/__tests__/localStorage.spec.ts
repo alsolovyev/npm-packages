@@ -68,10 +68,13 @@ describe('Local Storage', () => {
   })
 
   it('should return a default value if the item is undefined', () => {
-    const defaultValue: Array<string> = ['lorem', 'ipsum', 'dolor']
-    const value = ls.get<Array<string>>('key', defaultValue)
-
-    expect(value).toStrictEqual(defaultValue)
+    expect(ls.get<Array<string>>('key', ['lorem', 'ipsum'])).toStrictEqual(['lorem', 'ipsum'])
+    expect(ls.get<boolean>('key1', false)).toStrictEqual(false)
+    expect(ls.get<string>('key2', '')).toStrictEqual('')
+    expect(ls.get<number>('key3', 0)).toStrictEqual(0)
+    expect(ls.get<Record<string, string>>('key4', {})).toStrictEqual({})
+    expect(ls.get<Array<any>>('key5', [])).toStrictEqual([])
+    expect(ls.get<null>('key5', null)).toStrictEqual(null)
   })
 
   it('should return null if an error occurred while parsing the return value', () => {
