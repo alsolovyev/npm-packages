@@ -96,19 +96,13 @@ export default class LocalStorage implements ILocalStorage {
   public get<T>(key: string, defaultValue?: T): T | null {
     const storageValue = this._storageEngine.getItem(key)
 
-    if (!storageValue) {
-      return defaultValue || null
-    }
-
-    let value: T | null
+    if (!storageValue) return typeof defaultValue === 'undefined' ? null : defaultValue
 
     try {
-      value = JSON.parse(storageValue) as T
-    } catch (err) {
-      value = null
+      return JSON.parse(storageValue) as T
+    } catch (_) {
+      return typeof defaultValue === 'undefined' ? null : defaultValue
     }
-
-    return defaultValue && (value === null || value === undefined) ? (defaultValue as T) : value
   }
 
   /**
